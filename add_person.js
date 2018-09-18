@@ -19,15 +19,8 @@ const insertData = {first_name: firstName,
 last_name: lastName,
 birthdate: birthDate}
 
-// console.log(insertData)
+
 knex ("famous_people"). insert(insertData)
   .returning ('*')
   .then(rows => console.log(rows))
   .catch(err => console.log(err.message))
-  // .then(function (rows) {
-  //   console.log(rows);
-  //   return "famous_people";
-  // })
-  // .catch(function (error) {
-  //   console.error(error);
-  // });
