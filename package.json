@@ -1,0 +1,22 @@
+{
+  "name": "test_db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test_db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ankitaahuja/test_db.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ankitaahuja/test_db/issues"
+  },
+  "homepage": "https://github.com/Ankitaahuja/test_db#readme",
+  "dependencies": {
+    "pg": "^7.4.3"
+  }
+}
