@@ -1,31 +1,29 @@
 const pg = require("pg");
 const settings = require("./settings"); // settings.json
-
-const client = new pg.Client({
-  user     : settings.user,
-  password : settings.password,
-  database : settings.database,
-  host     : settings.hostname,
-  port     : settings.port,
-  ssl      : settings.ssl
-});
-
-client.connect((err) => {
-  if (err) {
-    return console.error("Connection Error", err);
+const knex = require('knex')({
+  client: 'pg',
+  connection: {
+    host: '127.0.0.1',
+    user: settings.user,
+    password: settings.password,
+    database: settings.database
   }
-  client.query("SELECT $1::int AS number", ["1"], (err, result) => {
-    if (err) {
-      return console.error("error running query", err);
-    }
-
-    client.query("SELECT $1::text AS message", ["Hi"], (err, result2) => {
-        if (err) {
-          return console.error("error running query", err);
-        }
-    console.log(result.rows[0].number); //output: 1
-    console.log(result2.rows[0].message); //output: Hi
-    client.end();
-    });
-    });
 });
+
+const firstName = process.argv[2];
+const lastName = process.argv[3];
+const birthDate = process.argv[4];
+
+console.log(firstName)
+const insertData = {first_name: firstName,
+last_name: lastName,
+birthdate: birthDate}
+console.log(insertData)
+knex ("famous_people"). insert(insertData)
+
+  .then(function (rows) {
+    console.log(rows);
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
